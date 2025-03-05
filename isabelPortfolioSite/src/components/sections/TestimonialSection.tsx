@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 // Import logos
-import a24Logo from '../../assets/logos/a24-films-black-on-white.png';
+import a24Logo from '../../assets/logos/A24-Logo_Use_this.png';
 import appleLogo from '../../assets/logos/appleLogo.png';
 import cbsLogo from '../../assets/logos/cbs-logo-png-transparent.png';
 import consulateLogo from '../../assets/logos/consulate.svg';
@@ -10,16 +10,16 @@ import disneyLogo from '../../assets/logos/Disney.png';
 import filmnationLogo from '../../assets/logos/filmnation-entertainment-logo-png_seeklogo-447370.png';
 import hboLogo from '../../assets/logos/HBO.png';
 import huluLogo from '../../assets/logos/hulu-logo.png';
-import killerFilmsLogo from '../../assets/logos/killerfilms1.jpg';
+import killerFilmsLogo from '../../assets/logos/Killer_Films_logo_black_on_white.png';
 import miramaxLogo from '../../assets/logos/miramax-films-logo-png-transparent.png';
-import neonLogo from '../../assets/logos/neon.png';
+import neonLogo from '../../assets/logos/Neon_Logo_Black_on_white.png';
 import netflixLogo from '../../assets/logos/Netflix_Logo_RGB.png';
 import paramountLogo from '../../assets/logos/paramount.png';
-import peacockLogo from '../../assets/logos/peacock.png';
+import peacockLogo from '../../assets/logos/Peacock_Logo_black_on_white.png';
 import primeLogo from '../../assets/logos/prime.png';
 import searchlightLogo from '../../assets/logos/searchlight-pictures-black-on-white.png';
 import showtimeLogo from '../../assets/logos/500px-Showtime.svg.png';
-import starzLogo from '../../assets/logos/starz.jpg';
+import starzLogo from '../../assets/logos/STARZ_idYTmRC7kq_0.png';
 
 const TestimonialSection: React.FC = () => {
   const [animate, setAnimate] = useState(false);
@@ -122,8 +122,8 @@ const TestimonialSection: React.FC = () => {
       src: paramountLogo,
       alt: 'Paramount',
       darkBackground: false,
-      width: '70%',
-      height: '35px'
+      width: '80%',
+      height: '55px'
     },
     {
       src: peacockLogo,

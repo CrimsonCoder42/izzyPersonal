@@ -21,7 +21,6 @@ const Navbar: React.FC = () => {
       sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionId = section.getAttribute('id');
-
         if (sectionId && sectionTop < 100 && sectionTop > -400) {
           setActiveLink(sectionId);
         }
@@ -42,7 +41,6 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     setActiveLink(id);
     setIsMenuOpen(false);
-
     const targetElement = document.getElementById(id);
     if (targetElement) {
       window.scrollTo({
@@ -67,7 +65,6 @@ const Navbar: React.FC = () => {
         <a href="#home" className="navbar-brand font-weight-bold text-primary" onClick={(e) => handleLinkClick(e, 'home')}>
           Isabel
         </a>
-
         <button
           type="button"
           className="navbar-toggler"
@@ -77,8 +74,16 @@ const Navbar: React.FC = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        <div className={`collapse navbar-collapse px-lg-3 ${isMenuOpen ? 'show' : ''}`} id="navbarCollapse">
+        <div
+          className={`collapse navbar-collapse px-lg-3 ${isMenuOpen ? 'show' : ''}`}
+          id="navbarCollapse"
+          style={{
+            transition: 'height 0.5s ease-in-out, opacity 0.5s ease-in-out',
+            opacity: isMenuOpen ? '1' : '0',
+            maxHeight: isMenuOpen ? '500px' : '0',
+            overflow: 'hidden'
+          }}
+        >
           <div className="navbar-nav m-auto py-0">
             {[
               { id: 'home', label: 'Home' },
@@ -99,7 +104,6 @@ const Navbar: React.FC = () => {
               </a>
             ))}
           </div>
-
           <a
             href="#contact"
             className="btn btn-outline-primary d-none d-lg-block"
