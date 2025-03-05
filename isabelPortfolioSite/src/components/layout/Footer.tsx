@@ -1,7 +1,6 @@
-// need to add link to IMBD page
-
+// src/components/layout/Footer.tsx
 import React from 'react';
-import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaLinkedinIn, FaInstagram, FaImdb } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   return (
@@ -21,56 +20,30 @@ const Footer: React.FC = () => {
         padding: '1.5rem 15px'
       }}>
         <div className="d-flex justify-content-center mb-4">
-          {/* LinkedIn */}
-          <a
-            className="btn btn-light btn-social mr-2"
-            href="https://www.linkedin.com/in/isabelcafaroanderson/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/isabelcafaroanderson/" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#0077B5', color: 'white' }}>
             <FaLinkedinIn />
           </a>
-          {/* Instagram */}
-          <a
-            className="btn btn-light btn-social"
-            href="https://www.instagram.com/isabelcanderson/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="btn btn-light btn-social mr-2" href="https://www.instagram.com/isabelcanderson/" target="_blank" rel="noopener noreferrer" style={{
+            background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+            color: 'white'
+          }}>
             <FaInstagram />
+          </a>
+          <a className="btn btn-light btn-social" href="https://www.imdb.com/name/nm3682805/" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#F5C518', color: 'black' }}>
+            <FaImdb />
           </a>
         </div>
         <div className="d-flex justify-content-center mb-3">
-          <a className="text-white" href="#">
-            Privacy
-          </a>
+          <a className="text-white" href="#">Privacy</a>
           <span className="px-3">|</span>
-          <a className="text-white" href="#">
-            Terms
-          </a>
+          <a className="text-white" href="#">Terms</a>
           <span className="px-3">|</span>
-          <a className="text-white" href="#">
-            FAQs
-          </a>
+          <a className="text-white" href="#">FAQs</a>
           <span className="px-3">|</span>
-          <a className="text-white" href="#">
-            Help
-          </a>
+          <a className="text-white" href="#">Help</a>
         </div>
         <p className="m-0">
-          &copy;{' '}
-          <a className="text-white font-weight-bold" href="#">
-            isabelcafaroanderson.com
-          </a>
-          . All Rights Reserved. Designed by{' '}
-          <a
-            className="text-white font-weight-bold"
-            href="https://digitalelevatepartners.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Digital Elevate Partners
-          </a>
+          &copy; <a className="text-white font-weight-bold" href="#">isabelcafaroanderson.com</a>. All Rights Reserved. Designed by <a className="text-white font-weight-bold" href="https://digitalelevatepartners.com/" target="_blank" rel="noopener noreferrer">Digital Elevate Partners</a>
         </p>
       </div>
     </div>

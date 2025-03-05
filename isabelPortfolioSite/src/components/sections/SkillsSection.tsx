@@ -1,9 +1,51 @@
 // src/components/sections/SkillsSection.tsx
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const SkillsSection: React.FC = () => {
+  const [animate, setAnimate] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Skills data with their percentages
+  const skills = [
+    { name: 'Digital Media', percent: 95, color: 'bg-primary' },
+    { name: 'Post Production', percent: 85, color: 'bg-warning' },
+    { name: 'Logistics Management', percent: 90, color: 'bg-danger' },
+    { name: 'Team Leadership', percent: 90, color: 'bg-danger' },
+    { name: 'Business Development', percent: 95, color: 'bg-dark' },
+    { name: 'Video Production', percent: 85, color: 'bg-info' }
+  ];
+
+  useEffect(() => {
+    // Set up the Intersection Observer to detect when the section is visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // If the section is intersecting (visible)
+        if (entries[0].isIntersecting) {
+          // Trigger animation
+          setAnimate(true);
+          // Disconnect the observer once triggered
+          observer.disconnect();
+        }
+      },
+      {
+        // Trigger when at least 10% of the element is visible
+        threshold: 0.1
+      }
+    );
+
+    // Start observing the section
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    // Clean up observer on component unmount
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="container-fluid py-5" id="skill">
+    <div className="container-fluid py-5" id="skill" ref={sectionRef}>
       <div className="container">
         <div className="position-relative d-flex align-items-center justify-content-center">
           <h1
@@ -18,100 +60,48 @@ const SkillsSection: React.FC = () => {
         </div>
         <div className="row align-items-center">
           <div className="col-md-6">
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Digital Media</h6>
+            {skills.slice(0, 3).map((skill, index) => (
+              <div className="skill mb-4" key={index}>
+                <div className="d-flex justify-content-between">
+                  <h6 className="font-weight-bold">{skill.name}</h6>
+                </div>
+                <div className="progress">
+                  <div
+                    className={`progress-bar ${skill.color}`}
+                    role="progressbar"
+                    aria-valuenow={skill.percent}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    style={{
+                      width: animate ? `${skill.percent}%` : '0%',
+                      transition: 'width 1.5s ease-in-out'
+                    }}
+                  ></div>
+                </div>
               </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-primary"
-                  role="progressbar"
-                  aria-valuenow={95}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '95%' }}
-                ></div>
-              </div>
-            </div>
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Post Production</h6>
-              </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-warning"
-                  role="progressbar"
-                  aria-valuenow={85}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '85%' }}
-                ></div>
-              </div>
-            </div>
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Logistics Management</h6>
-
-              </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-danger"
-                  role="progressbar"
-                  aria-valuenow={90}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '90%' }}
-                ></div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="col-md-6">
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Team Leadership</h6>
+            {skills.slice(3).map((skill, index) => (
+              <div className="skill mb-4" key={index}>
+                <div className="d-flex justify-content-between">
+                  <h6 className="font-weight-bold">{skill.name}</h6>
+                </div>
+                <div className="progress">
+                  <div
+                    className={`progress-bar ${skill.color}`}
+                    role="progressbar"
+                    aria-valuenow={skill.percent}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    style={{
+                      width: animate ? `${skill.percent}%` : '0%',
+                      transition: 'width 1.5s ease-in-out'
+                    }}
+                  ></div>
+                </div>
               </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-danger"
-                  role="progressbar"
-                  aria-valuenow={90}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '90%' }}
-                ></div>
-              </div>
-            </div>
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Business Development</h6>
-                
-              </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-dark"
-                  role="progressbar"
-                  aria-valuenow={95}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '95%' }}
-                ></div>
-              </div>
-            </div>
-            <div className="skill mb-4">
-              <div className="d-flex justify-content-between">
-                <h6 className="font-weight-bold">Video Production</h6>
-              </div>
-              <div className="progress">
-                <div
-                  className="progress-bar bg-info"
-                  role="progressbar"
-                  aria-valuenow={85}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  style={{ width: '85%' }}
-                ></div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
